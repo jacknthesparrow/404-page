@@ -16,7 +16,18 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      position: relative;
+      overflow: hidden;
     }
+
+    .letter {
+          position: absolute;
+          font-size: 3rem;
+          font-weight: bold;
+          color: #f0f0f0; /* white text */
+          user-select: none;
+          z-index: 10;
+        }
 
     img {
       width: 50px;
@@ -54,7 +65,28 @@
   <img src="Jack_Justin_on_Sarin.jpg" alt="404 image">
   <h1>404</h1>
   <p>Oops! The page you're looking for doesn't exist.</p>
-  
+  <h1 id="random-word"></h1>
+
+  <script>
+   window.onload = function()
+   {
+      const word = "50C137Y";
+
+      for (let i = 0; i < word.length; i++) 
+      {
+        const letter = document.createElement('div');
+        letter.textContent = word[i];
+        letter.classList.add('letter');
+
+        // Random position
+        const x = Math.random() * (window.innerWidth - 50);  // leave margin
+        const y = Math.random() * (window.innerHeight - 50);
+        letter.style.left = x + 'px';
+        letter.style.top = y + 'px';
+
+        document.body.appendChild(letter);
+      }
+  }
+  </script>
 </body>
 </html>
-
